@@ -46,20 +46,21 @@ public class HotelManagementRepository {
         //Out of all the hotels we have added so far, we need to find the hotelName with most no of facilities
         //Incase there is a tie return the lexicographically smaller hotelName
         //Incase there is not even a single hotel with atleast 1 facility return "" (empty string)
-        ArrayList<String>store=new ArrayList<>();
+        String ans="";
         Integer numberOfFacilities=Integer.MIN_VALUE;
         for( String key : this.hotelMap.keySet()){
-            if(this.hotelMap.get(key).getFacilities().size()>=numberOfFacilities){
-                numberOfFacilities=this.hotelMap.get(key).getFacilities().size();
-                store.add(this.hotelMap.get(key).getHotelName());
+            Hotel hotel=this.hotelMap.get(key);
+            if(hotel.getFacilities().size()>numberOfFacilities){
+                ans=key;
+                numberOfFacilities=hotel.getFacilities().size();
+            } else if(hotel.getFacilities().size()==numberOfFacilities){
+                if(hotel.getHotelName().compareTo(ans)<0){
+                    ans=hotel.getHotelName();
+                }
             }
-        }
-        if(store.size()==0){
-            return Optional.of(null);
-        }
-        Collections.sort(store);
 
-        return Optional.of(store.get(0));
+        }
+        return Optional.of(ans);
     }
 
     public void bookRoom(Booking booking) {
