@@ -55,7 +55,7 @@ public class HotelManagementRepository {
             }
         }
         if(store.size()==0){
-            return Optional.of("");
+            return Optional.of(null);
         }
         Collections.sort(store);
 
