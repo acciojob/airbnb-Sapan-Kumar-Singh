@@ -27,25 +27,21 @@ public class HotelManagementService {
 
     }
 
-    public Integer addUser(User user) throws Exception {
+    public Integer addUser(User user)  {
         //You need to add a User Object to the database
         //Assume that user will always be a valid user and return the aadharCardNo of the user
         Optional<Integer> userOpt=hotelManagementRepository.addUser(user);
-        if(userOpt.isEmpty()){
-            throw new Exception();
-        }
+
         return userOpt.get();
     }
 
 
-    public String getHotelWithMostFacilities() throws Exception {
+    public String getHotelWithMostFacilities()  {
         //Out of all the hotels we have added so far, we need to find the hotelName with most no of facilities
         //Incase there is a tie return the lexicographically smaller hotelName
         //Incase there is not even a single hotel with atleast 1 facility return "" (empty string)
         Optional<String >facilityOpt=hotelManagementRepository. getHotelWithMostFacilities();
-        if(facilityOpt.isEmpty()){
-            throw new Exception();
-        }
+
         return facilityOpt.get();
 
     }

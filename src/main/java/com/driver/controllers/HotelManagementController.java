@@ -23,7 +23,7 @@ public class HotelManagementController {
 
    HotelManagementService hotelManagementService=new HotelManagementService();
     @PostMapping("/add-hotel")
-    public String addHotel(@RequestBody Hotel hotel) throws Exception{
+    public String addHotel(@RequestBody Hotel hotel) {
 
         //You need to add an hotel to the database
         //incase the hotelName is null or the hotel Object is null return an empty a FAILURE
@@ -35,7 +35,7 @@ public class HotelManagementController {
     }
 
     @PostMapping("/add-user")
-    public Integer addUser(@RequestBody User user) throws Exception{
+    public Integer addUser(@RequestBody User user) {
 
         //You need to add a User Object to the database
         //Assume that user will always be a valid user and return the aadharCardNo of the user
@@ -44,7 +44,7 @@ public class HotelManagementController {
 
 
     @GetMapping("/get-hotel-with-most-facilities")
-    public String getHotelWithMostFacilities() throws Exception{
+    public String getHotelWithMostFacilities(){
 
         //Out of all the hotels we have added so far, we need to find the hotelName with most no of facilities
         //Incase there is a tie return the lexicographically smaller hotelName
