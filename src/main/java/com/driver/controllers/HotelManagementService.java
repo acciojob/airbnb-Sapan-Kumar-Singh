@@ -61,15 +61,14 @@ public class HotelManagementService {
           if(hotel.getAvailableRooms()<noOfRoomBook){
               return -1;
           }
-        String bookingId= UUID.randomUUID().toString();
-        while(hotelManagementRepository.notUnique(bookingId)){
-            bookingId=UUID.randomUUID().toString();
-        }
-          Integer amountToBePaid=hotel.getPricePerNight()*noOfRoomBook;
+         String bookingId= UUID.randomUUID().toString();
          booking.setBookingId(bookingId);
-         booking.setAmountToBePaid(amountToBePaid);
-           hotelManagementRepository.updateRoom(hotelName,noOfRoomBook);
+          Integer amountToBePaid=hotel.getPricePerNight()*noOfRoomBook;
+
+          booking.setAmountToBePaid(amountToBePaid);
+           hotel.setAvailableRooms(hotel.getAvailableRooms()-noOfRoomBook);
            hotelManagementRepository.bookRoom(booking);
+           hotelManagementRepository.addHotel(hotel);
            return amountToBePaid;
     }
 

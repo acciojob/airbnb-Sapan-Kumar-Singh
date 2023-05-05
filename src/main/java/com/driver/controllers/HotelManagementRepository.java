@@ -79,20 +79,7 @@ public class HotelManagementRepository {
         return this.hotelMap.get(hotelName);
     }
 
-    public boolean notUnique(String bookingId) {
-        if(this.bookingMap.containsKey(bookingId)){
-            return true;
-        }
-        return false;
-    }
 
-    public void updateRoom(String hotelName,int noOfRoomBook) {
-
-        Hotel temp=this.hotelMap.get(hotelName);
-        temp.setAvailableRooms(temp.getAvailableRooms()-noOfRoomBook);
-        this.hotelMap.put(hotelName,temp);
-
-    }
 
     public int getBookings(Integer aadharCard) {
 
