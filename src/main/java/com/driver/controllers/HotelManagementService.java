@@ -20,7 +20,7 @@ public class HotelManagementService {
         //in all other cases return SUCCESS after successfully adding the hotel to the hotelDb.
         Optional<Boolean>addOpt =hotelManagementRepository.addHotel(hotel);
         if(addOpt.isEmpty()){
-            return " FAILURE";
+            return "FAILURE";
         }
 
         return "SUCCESS";
