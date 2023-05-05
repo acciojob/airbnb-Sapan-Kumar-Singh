@@ -66,9 +66,10 @@ public class HotelManagementService {
             bookingId=UUID.randomUUID().toString();
         }
           Integer amountToBePaid=hotel.getPricePerNight()*noOfRoomBook;
+         booking.setBookingId(bookingId);
+         booking.setAmountToBePaid(amountToBePaid);
            hotelManagementRepository.updateRoom(hotelName,noOfRoomBook);
-          Booking book=new Booking(bookingId,booking.getBookingAadharCard(),noOfRoomBook,booking.getBookingPersonName(),hotelName);
-           hotelManagementRepository.bookRoom(book);
+           hotelManagementRepository.bookRoom(booking);
            return amountToBePaid;
     }
 
